@@ -1,3 +1,4 @@
+import numpy as np
 from torch.utils.data import Dataset
 import os
 import cv2
@@ -31,7 +32,6 @@ import torch
 class MattingHumanDataset(Dataset):
     def __init__(self, data_frame, img_size=768):
         super(MattingHumanDataset, self).__init__()
-        self.class_num = class_num + 1
         self.img_size = img_size
         self.img_path = []
         self.mask_path = []
@@ -43,8 +43,14 @@ class MattingHumanDataset(Dataset):
     def _get_mask(self, label_path):
         mask = cv2.imread(label_path, cv2.IMREAD_UNCHANGED)
         mask = mask[:, :, 3]
+        mask[mask[:, :] > 0] = 1
 
-        return mask
+        h, w = mask.shape
+        masks = np.zeros((h, w, 2))
+        for row in range(h):  # 遍历每一行
+            for col in range(w):  # 遍历每一列
+                masks[row, col, int(mask[row][col])] = 1
+        return masks
 
     def _get_img(self, img_path):
         img = cv2.imread(img_path)
@@ -53,6 +59,7 @@ class MattingHumanDataset(Dataset):
     def __getitem__(self, idx):
         img = self._get_img(self.img_path[idx])
         mask = self._get_mask(self.mask_path[idx])
+    
         # if self.train:
         #     img, mask = img_aug(img, mask)
 
