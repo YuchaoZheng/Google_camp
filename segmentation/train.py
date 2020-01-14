@@ -6,14 +6,27 @@ import torch
 import torch.nn as nn
 from itertools import cycle
 import time
+from tqdm import tqdm
+import random
+
+def seed_everything(seed):
+    random.seed(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.benchmark = True
+
+seed_everything(1025)
 
 BATCH_SIZE = 4 
 STEPS = 100000000
 LR = 1e-4
-EVAL_STEP = 1000
+EVAL_STEP = 1500
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-test_proportion = 0.05
-eval_proportion = 0.10
+print("device ", device)
+test_proportion = 0.1
+eval_proportion = 0.1
 
 df_data = pd.read_csv("/home/yuchaozheng_zz/Google_camp/segmentation/df_data.csv")
 
@@ -26,6 +39,9 @@ df_test = df_data.sample(NUM_TEST_IMAGES, random_state=101)
 df_test = df_test.reset_index(drop=True)
 
 test_images_list = list(df_test['image_name'])
+
+df_test.to_csv("test.csv")
+
 df_data = df_data[~df_data['image_name'].isin(test_images_list)]
 df_train, df_val = train_test_split(df_data, test_size=eval_proportion, random_state=101)
 
@@ -50,13 +66,6 @@ evalloader = torch.utils.data.DataLoader(evalsets,
                                          shuffle=False,
                                          drop_last=False)
 
-tests = MattingHumanDataset(df_test)
-testloader = torch.utils.data.DataLoader(tests,
-                                         batch_size=BATCH_SIZE,
-                                         shuffle=False,
-                                         drop_last=False)
-
-
 def iou(pred, target):
     pred = pred.view(-1)
     target = target.view(-1)
@@ -79,7 +88,7 @@ def valid(model, evalloader, criterion, data_len):
     sum_val_loss = 0
 
     with torch.no_grad():
-        for batch_idx, (img, mask) in enumerate(evalloader):
+        for batch_idx, (img, mask) in enumerate(tqdm(evalloader)):
             img = img.to(device)
             mask = mask.to(device)
             pred = model(img)
@@ -101,7 +110,7 @@ model = model.to(device)
 
 optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 
-print('iter   epoch  | valid_loss  valid_iou | test_loss  test_iou|  train_loss |  time')
+print('iter   epoch  | valid_loss  valid_iou |  train_loss |  time')
 print('---------------------------------------------------------------------------------')
 
 start_time = time.time()
@@ -121,22 +130,19 @@ for step in range(STEPS):
     loss.backward()
     optimizer.step()
     
-    if step % 100 == 0:
-        print("step: {} ".format(step))
     if (step + 1) % EVAL_STEP == 0:
         model.eval()
-
+        print("train time ", time.time() - start_time)
         eval_loss, eval_m_iou = valid(model, evalloader, criterion, eval_len)
-        test_loss, test_m_iou = valid(model, testloader, criterion, test_len)
         
         if best_eval_m_iou < eval_m_iou:
             torch.save(model.state_dict(), "./best.pth")
-            best_eval_m_ioy = eval_m_iou
+            best_eval_m_iou = eval_m_iou
 
         model.train()
         elapsed_time = time.time() - start_time
 
         print(
-            '{:.1f}k  {:.1f}  |  {:.4f}  {:.4f} |  {:.4f}  {:.4f} | {:.4f}  | {:.1f}second'.format(
-                step / 1000, step / epoch_step, eval_loss, eval_m_iou, test_loss, test_m_iou, sum_loss / (step + 1),
+            '{:.1f}k  {:.1f}  |  {:.4f}  {:.4f} | {:.4f}  | {:.1f}second'.format(
+                step / 1000, step / epoch_step, eval_loss, eval_m_iou, sum_loss / (step + 1),
                 elapsed_time))

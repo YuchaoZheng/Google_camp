@@ -47,9 +47,8 @@ class MattingHumanDataset(Dataset):
 
         h, w = mask.shape
         masks = np.zeros((h, w, 2))
-        for row in range(h):  # 遍历每一行
-            for col in range(w):  # 遍历每一列
-                masks[row, col, int(mask[row][col])] = 1
+        masks[mask == 1, 1] = 1
+        masks[mask == 0, 0] = 1
         return masks
 
     def _get_img(self, img_path):
