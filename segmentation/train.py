@@ -20,7 +20,7 @@ def seed_everything(seed):
 seed_everything(1025)
 
 BATCH_SIZE = 4 
-STEPS = 100000000
+EPOCH = 100
 LR = 1e-4
 EVAL_STEP = 1500
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -53,11 +53,10 @@ print(df_val.shape)
 print(df_test.shape)
 
 trainsets = MattingHumanDataset(df_train)
-train_sampler = RandomSampler(trainsets)
-
-train_loader = DataLoader(trainsets, sampler=train_sampler, batch_size=BATCH_SIZE)
-epoch_step = len(train_loader)
-train_loader = cycle(train_loader)
+trainloader = torch.utils.data.DataLoader(trainsets,
+                                         batch_size=BATCH_SIZE,
+                                         shuffle=True,
+                                         drop_last=True)
 
 
 evalsets = MattingHumanDataset(df_val)
@@ -116,33 +115,35 @@ print('-------------------------------------------------------------------------
 start_time = time.time()
 sum_loss = 0
 best_eval_m_iou = 0
+step = 0
 
-for step in range(STEPS):
-    data = next(train_loader)
-    optimizer.zero_grad()
-    img, mask = data
-    img = img.to(device)
-    mask = mask.to(device)
-    pred = model(img)
-    loss = criterion(pred, mask)
+for epoch in range(EPOCH):
+    for (img, mask) in tqdm(trainloader):
+        optimizer.zero_grad()
+        img = img.to(device)
+        mask = mask.to(device)
+        pred = model(img)
+        loss = criterion(pred, mask)
 
-    sum_loss += loss.item()
-    loss.backward()
-    optimizer.step()
-    
-    if (step + 1) % EVAL_STEP == 0:
-        model.eval()
-        print("train time ", time.time() - start_time)
-        eval_loss, eval_m_iou = valid(model, evalloader, criterion, eval_len)
-        
-        if best_eval_m_iou < eval_m_iou:
-            torch.save(model.state_dict(), "./best.pth")
-            best_eval_m_iou = eval_m_iou
+        sum_loss += loss.item()
+        loss.backward()
+        optimizer.step()
 
-        model.train()
-        elapsed_time = time.time() - start_time
+        step += 1
 
-        print(
-            '{:.1f}k  {:.1f}  |  {:.4f}  {:.4f} | {:.4f}  | {:.1f}second'.format(
-                step / 1000, step / epoch_step, eval_loss, eval_m_iou, sum_loss / (step + 1),
-                elapsed_time))
+        if step % EVAL_STEP == 0:
+            model.eval()
+            print("train time ", time.time() - start_time)
+            eval_loss, eval_m_iou = valid(model, evalloader, criterion, eval_len)
+
+            if best_eval_m_iou < eval_m_iou:
+                torch.save(model.state_dict(), "./best.pth")
+                best_eval_m_iou = eval_m_iou
+
+            model.train()
+            elapsed_time = time.time() - start_time
+
+            print(
+                '{:.1f}k  {:.1f}  |  {:.4f}  {:.4f} | {:.4f}  | {:.1f}second'.format(
+                    step / 1000, step / epoch_step, eval_loss, eval_m_iou, sum_loss / (step + 1),
+                    elapsed_time))
