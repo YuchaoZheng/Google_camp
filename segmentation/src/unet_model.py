@@ -4,10 +4,10 @@ import torch.nn.functional as F
 
 
 class UNet(nn.Module):
-    def __init__(self, n_channels, n_classes, bilinear=True):
+    def __init__(self, bilinear=True):
         super(UNet, self).__init__()
-        self.n_channels = n_channels
-        self.n_classes = n_classes
+        self.n_channels = 3
+        self.n_classes = 2
         self.bilinear = bilinear
 
         self.inc = DoubleConv(n_channels, 64)
