@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="183ae300-7b0b-4ee0-83e4-0897c7d53f73" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/unet_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/make_dataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="547">
+              <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>1024</find>
+      <find>create_dir</find>
+      <find>cfg[&quot;multi_GPU&quot;]</find>
+      <find>log_dir</find>
+      <find>self</find>
+      <find>GlobalAvgPool2d</find>
+      <find>se_resnext101_32x4d</find>
+      <find>num_logit_features</find>
+      <find>ConvReluBn</find>
+      <find>logit_bn</find>
+      <find>create_logit_module</find>
+      <find>logit_bias</find>
+      <find>vis_image</find>
+      <find>run_id</find>
+      <find>Dropout2d</find>
+      <find>DecoderBlockBN</find>
+      <find>FPAv2</find>
+      <find>expansion</find>
+      <find>logit</find>
+      <find>pretrained_dict</find>
+      <find>relu</find>
+      <find>conv1</find>
+      <find>root_dir</find>
+      <find>cfg</find>
+      <find>model</find>
+      <find>build_loss</find>
+      <find>object</find>
+      <find>scheduler</find>
+      <find>res</find>
+      <find>reshape</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>base_path</replace>
+      <replace>logging(log_dir,</replace>
+      <replace>use_data_aug</replace>
+      <replace>label_4</replace>
+      <replace>512</replace>
+      <replace>768</replace>
+      <replace>print(</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/train_crop.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/ensemble.py" />
+        <option value="$PROJECT_DIR$/data/small_imgs_for_viewing/u-net_768_False_0801-1657.py" />
+        <option value="$PROJECT_DIR$/util/__init__.py" />
+        <option value="$PROJECT_DIR$/util/result_deal.py" />
+        <option value="$PROJECT_DIR$/src/datasets.py" />
+        <option value="$PROJECT_DIR$/tmp.py" />
+        <option value="$PROJECT_DIR$/config/predict_image_config.py" />
+        <option value="$PROJECT_DIR$/predict_image.py" />
+        <option value="$PROJECT_DIR$/util/tmp.py" />
+        <option value="$PROJECT_DIR$/util/train_crop.py" />
+        <option value="$PROJECT_DIR$/util/visualizations.py" />
+        <option value="$PROJECT_DIR$/src/val.py" />
+        <option value="$PROJECT_DIR$/train_se101.py" />
+        <option value="$PROJECT_DIR$/utils/train_crop.py" />
+        <option value="$PROJECT_DIR$/train_se50.py" />
+        <option value="$PROJECT_DIR$/config/se101_config.py" />
+        <option value="$PROJECT_DIR$/config/se50_config.py" />
+        <option value="$PROJECT_DIR$/src/senet.py" />
+        <option value="$PROJECT_DIR$/infer_test.py" />
+        <option value="$PROJECT_DIR$/train_re50.py" />
+        <option value="$PROJECT_DIR$/config/resnet_config.py" />
+        <option value="$PROJECT_DIR$/config/infer_config.py" />
+        <option value="$PROJECT_DIR$/src/infer.py" />
+        <option value="$PROJECT_DIR$/src/resnet.py" />
+        <option value="$PROJECT_DIR$/src/unet_plus.py" />
+        <option value="$PROJECT_DIR$/src/loss.py" />
+        <option value="$PROJECT_DIR$/src/train.py" />
+        <option value="$PROJECT_DIR$/src/dataset.py" />
+        <option value="$PROJECT_DIR$/src/unet_model.py" />
+        <option value="$PROJECT_DIR$/make_dataset.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="180" />
+    <option name="y" value="132" />
+    <option name="width" value="1080" />
+    <option name="height" value="659" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="segmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="segmentation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="segmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="segmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="183ae300-7b0b-4ee0-83e4-0897c7d53f73" name="Default Changelist" comment="" />
+      <created>1564366205115</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564366205115</updated>
+      <workItem from="1564366206341" duration="8658000" />
+      <workItem from="1564405458215" duration="4347000" />
+      <workItem from="1564468819442" duration="1951000" />
+      <workItem from="1564547222252" duration="286000" />
+      <workItem from="1564563009174" duration="6836000" />
+      <workItem from="1564621648230" duration="10156000" />
+      <workItem from="1564663289100" duration="4069000" />
+      <workItem from="1564715019238" duration="2632000" />
+      <workItem from="1564722714450" duration="6454000" />
+      <workItem from="1564749262166" duration="132000" />
+      <workItem from="1564750250624" duration="340000" />
+      <workItem from="1564753418298" duration="23006000" />
+      <workItem from="1564919205991" duration="4065000" />
+      <workItem from="1564971240911" duration="1034000" />
+      <workItem from="1564972791590" duration="750000" />
+      <workItem from="1565002200674" duration="4020000" />
+      <workItem from="1565066266236" duration="1056000" />
+      <workItem from="1565092099300" duration="351000" />
+      <workItem from="1565101604083" duration="723000" />
+      <workItem from="1565666743079" duration="7245000" />
+      <workItem from="1565749288935" duration="306000" />
+      <workItem from="1565839489413" duration="1744000" />
+      <workItem from="1565858254439" duration="134000" />
+      <workItem from="1566025927165" duration="16018000" />
+      <workItem from="1566138824768" duration="3957000" />
+      <workItem from="1566260981298" duration="557000" />
+      <workItem from="1566266659624" duration="1499000" />
+      <workItem from="1566291139591" duration="20000" />
+      <workItem from="1566292294116" duration="3337000" />
+      <workItem from="1566312234934" duration="548000" />
+      <workItem from="1566352023934" duration="4781000" />
+      <workItem from="1566376431637" duration="757000" />
+      <workItem from="1566385396522" duration="1361000" />
+      <workItem from="1566388962840" duration="282000" />
+      <workItem from="1566436997869" duration="7223000" />
+      <workItem from="1566485483125" duration="2657000" />
+      <workItem from="1566616161639" duration="241000" />
+      <workItem from="1566627380098" duration="262000" />
+      <workItem from="1567256921506" duration="16000" />
+      <workItem from="1567609796509" duration="401000" />
+      <workItem from="1567661503068" duration="2956000" />
+      <workItem from="1567671517117" duration="611000" />
+      <workItem from="1568096603755" duration="228000" />
+      <workItem from="1568447070962" duration="722000" />
+      <workItem from="1568449292085" duration="12000" />
+      <workItem from="1568597473528" duration="125000" />
+      <workItem from="1568612923999" duration="438000" />
+      <workItem from="1572424125060" duration="2346000" />
+      <workItem from="1572432672757" duration="493000" />
+      <workItem from="1572435333654" duration="3298000" />
+      <workItem from="1573459285974" duration="3678000" />
+      <workItem from="1573616484927" duration="3189000" />
+      <workItem from="1574905538743" duration="2000" />
+      <workItem from="1576592626354" duration="1195000" />
+      <workItem from="1576755437301" duration="117000" />
+      <workItem from="1576849486230" duration="1262000" />
+      <workItem from="1576853836278" duration="472000" />
+      <workItem from="1578397605417" duration="2559000" />
+      <workItem from="1578537241338" duration="272000" />
+      <workItem from="1578571666751" duration="26000" />
+      <workItem from="1578906584171" duration="343000" />
+      <workItem from="1578906979367" duration="1492000" />
+      <workItem from="1578920542673" duration="604000" />
+      <workItem from="1578965304744" duration="131000" />
+      <workItem from="1578965437809" duration="911000" />
+      <workItem from="1578968184057" duration="4000" />
+      <workItem from="1578969402945" duration="3079000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="164777000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2639485" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32928064" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.26641884" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32928064" />
+      <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2918455" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32928064" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.32928064" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32928064" />
+      <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet101_experiment_10_768_512_ce_0_3900_0818_0959/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet101_experiment_10_768_512_ce_0_6719_0819_0209/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/ensemble.py" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet101_experiment_10_768_512_ce_1_2600_0819_1416/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet101_experiment_10_768_512_ce_1_2600_0819_1416/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet101_experiment_10_768_512_ce_1_1300_0819_0808/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet101_experiment_10_768_512_ce_0_6500_0818_2232/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet101_experiment_10_768_512_ce_0_5200_0818_1628/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/config/se101_config.py" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_0_6029_0820_0707/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_1_2400_0820_1759/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_1_4800_0821_0520/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_1_2400_0820_1759/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_1_4019_512_256/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_1_4019_512_256/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/config/resnet_config.py" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_2_3000_512_256/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_2_1000_512_256/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_2_1000_512_256/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_2_3000_512_256/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_2_2000_512_256/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/resnet_experiment_22_model_2_2000_512_256/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_1_1200_0820_1227/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_1_3600_0820_2319/image_3_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_1_3600_0820_2319/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/data/small_imgs_for_viewing/unet_senet50_experiment_14_512_378_ce_1_1200_0820_1227/image_4_masked.png" />
+    <entry file="file://$PROJECT_DIR$/infer_test.py" />
+    <entry file="file://$PROJECT_DIR$/train_se101.py" />
+    <entry file="file://$PROJECT_DIR$/train_se50.py" />
+    <entry file="file://$PROJECT_DIR$/src/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/src/val.py" />
+    <entry file="file://$PROJECT_DIR$/config/se50_config.py" />
+    <entry file="file://$PROJECT_DIR$/src/datasets.py" />
+    <entry file="file://$PROJECT_DIR$/config/infer_config.py" />
+    <entry file="file://$PROJECT_DIR$/src/unet_plus.py" />
+    <entry file="file://$PROJECT_DIR$/tmp.py" />
+    <entry file="file://$PROJECT_DIR$/utils/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/utils/matrix_shape.py" />
+    <entry file="file://$PROJECT_DIR$/utils/result_deal.py" />
+    <entry file="file://$PROJECT_DIR$/utils/tmp.py" />
+    <entry file="file://$PROJECT_DIR$/utils/train_crop.py" />
+    <entry file="file://$PROJECT_DIR$/utils/visualizations.py" />
+    <entry file="file://$PROJECT_DIR$/src/train.py" />
+    <entry file="file://$PROJECT_DIR$/src/senet.py" />
+    <entry file="file://$PROJECT_DIR$/src/loss.py" />
+    <entry file="file://$PROJECT_DIR$/src/infer.py" />
+    <entry file="file://$PROJECT_DIR$/train_re50.py" />
+    <entry file="file://$PROJECT_DIR$/src/resnet.py" />
+    <entry file="file://$PROJECT_DIR$/src/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/unet_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
