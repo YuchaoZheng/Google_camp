@@ -25,10 +25,10 @@ def make_csv(path, train = False):
 
     if train:
         result = {"image_name": img_name,
-             "train_base_dir": base_dir}
+             "img_base_dir": base_dir}
     else:
         result = {"mask_name": img_name,
-                  "test_base_dir": base_dir}
+                  "mask_base_dir": base_dir}
 
     df = pd.DataFrame(result)
 
