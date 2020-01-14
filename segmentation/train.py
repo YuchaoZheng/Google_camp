@@ -9,11 +9,11 @@ import time
 
 BATCH_SIZE = 4 
 STEPS = 100000000
-LR = 1e-5
+LR = 1e-4
 EVAL_STEP = 1000
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-test_proportion = 0.1
-eval_proportion = 0.15
+test_proportion = 0.05
+eval_proportion = 0.10
 
 df_data = pd.read_csv("/home/yuchaozheng_zz/Google_camp/segmentation/df_data.csv")
 
@@ -46,14 +46,12 @@ train_loader = cycle(train_loader)
 
 evalsets = MattingHumanDataset(df_val)
 evalloader = torch.utils.data.DataLoader(evalsets,
-                                         num_workers=8,
                                          batch_size=BATCH_SIZE,
                                          shuffle=False,
                                          drop_last=False)
 
 tests = MattingHumanDataset(df_test)
 testloader = torch.utils.data.DataLoader(tests,
-                                         num_workers=8,
                                          batch_size=BATCH_SIZE,
                                          shuffle=False,
                                          drop_last=False)
@@ -123,6 +121,8 @@ for step in range(STEPS):
     loss.backward()
     optimizer.step()
     
+    if step % 100 == 0:
+        print("step: {} ".format(step))
     if (step + 1) % EVAL_STEP == 0:
         model.eval()
 
