@@ -48,7 +48,7 @@ model = model.to(device)
 model.load_state_dict(torch.load(model_file))
 model.eval()
 
-def get_img(self, img_path):
+def get_img(img_path):
     img = cv2.imread(img_path)
     return img
 
@@ -77,4 +77,4 @@ with torch.no_grad():
     alpha_preds = pred * 255
 
     predicted_masks = np.concatenate((img, alpha_preds), axis=-1)
-    cv2.imwrite('~/result.jpg', predicted_masks)
+    cv2.imwrite('/home/yuchaozheng_zz/result.png', predicted_masks)
