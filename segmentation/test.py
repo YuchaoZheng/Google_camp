@@ -77,6 +77,4 @@ with torch.no_grad():
     alpha_preds = pred * 255
 
     predicted_masks = np.concatenate((img, alpha_preds), axis=-1)
-    cv2.imwrite('~/result/{}'.format(row['image_name']), predicted_masks)
-
-
+    cv2.imwrite('~/result.jpg', predicted_masks)
