@@ -87,7 +87,7 @@ def valid(model, evalloader, criterion, data_len):
     sum_val_loss = 0
 
     with torch.no_grad():
-        for batch_idx, (img, mask) in enumerate(tqdm(evalloader)):
+        for batch_idx, (img, mask) in enumerate(evalloader):
             img = img.to(device)
             mask = mask.to(device)
             pred = model(img)
@@ -118,7 +118,7 @@ best_eval_m_iou = 0
 step = 0
 
 for epoch in range(EPOCH):
-    for (img, mask) in tqdm(trainloader):
+    for (img, mask) in trainloader:
         optimizer.zero_grad()
         img = img.to(device)
         mask = mask.to(device)
