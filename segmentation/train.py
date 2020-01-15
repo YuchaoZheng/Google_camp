@@ -57,7 +57,7 @@ trainloader = torch.utils.data.DataLoader(trainsets,
                                          batch_size=BATCH_SIZE,
                                          shuffle=True,
                                          drop_last=True)
-
+epoch_step = len(trainloader)
 
 evalsets = MattingHumanDataset(df_val)
 evalloader = torch.utils.data.DataLoader(evalsets,
