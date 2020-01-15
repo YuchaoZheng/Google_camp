@@ -1,6 +1,7 @@
 import io
 import json
 from src import *
+from beautify import Makeup
 
 import flask
 import torch
@@ -42,11 +43,25 @@ def predict():
     # Ensure an image was properly uploaded to our endpoint.
     if flask.request.method == 'POST':
         if flask.request.files.get("image"):
-            # Read the image in PIL format
             image = flask.request.files["image"].read()
             image = Image.open(io.BytesIO(image))
             img_path = "./receive.jpg"
             image.save(img_path)
+
+            data = flask.request.get_json()
+            print(data)
+
+            raw_img = cv2.imread(img_path)
+            makeup_obj = Makeup(raw_img)
+
+            results = makeup_obj.beautify(smooth_val=data["smooth"], whiten_val=data["whiten"],
+                                          lip_brighten_val=data["lip_brighten"], sharpen_val=data["sharpen"],
+                                          thin_val=data["thin"])
+
+            img_path = "./beauty_result.jpg"
+            cv2.imwrite(img_path, results)
+            # Read the image in PIL format
+
             # Preprocess the image and prepare it for classification.
             img = prepare_image(img_path, target_size=(800, 600))
 
@@ -55,21 +70,21 @@ def predict():
                 pred = torch.argmax(pred.cpu(), dim=1)
 
                 img = cv2.imread(img_path)
-               	pred = torch.unsqueeze(pred, 1)
+                pred = torch.unsqueeze(pred, 1)
                 pred = torch.squeeze(pred, 0)
 
                 # c, h, w -> h, w, c
                 pred = pred.permute(1, 2, 0).numpy()
                 alpha_preds = pred * 255
                 predicted_masks = np.concatenate((img, alpha_preds), axis=-1)
-                cv2.imwrite('./result.png', predicted_masks)  
-	        	
+                cv2.imwrite('./result.png', predicted_masks)
+
                 result = open('./result.png', 'rb').read()
 
                 return result
     # Return the data dictionary as a JSON response.
-    return None 
+    return None
 
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=443)
+    app.run(debug=True, host='0.0.0.0', port=443)

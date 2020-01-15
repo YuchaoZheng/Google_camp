@@ -11,12 +11,12 @@ def predict_result(image_path):
     # Initialize image path
     image = open(image_path, 'rb').read()
     print(len(image))
-    payload = {'image': image}
+    payload = {'image': image, ''}
 
-    print("PPPPPP")
+    dataload = {'smooth': 0.75, 'lip_brighten': 0.3, 'whiten': 0.2, 'sharpen': 0.35, 'thin': 0.8}
 
     # Submit the request.
-    picture_bytes = requests.post(PyTorch_REST_API_URL, files=payload)
+    picture_bytes = requests.post(PyTorch_REST_API_URL, data=json.dumps(dataload), files=payload)
 
     # Ensure the request was successful.
     if picture_bytes != None:
