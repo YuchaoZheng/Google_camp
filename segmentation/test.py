@@ -5,9 +5,9 @@ from src import *
 import torch
 import torch.nn as nn
 import os
+import numpy as np
 import cv2
 import torch
-import np
 from itertools import cycle
 import time
 from tqdm import tqdm
@@ -40,7 +40,7 @@ seed_everything(1025)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-model_file = "~/Google_camp/segmentation/best.pth"
+model_file = "/home/yuchaozheng_zz/Google_camp/segmentation/best.pth"
 
 model = UNet()
 model = model.to(device)
