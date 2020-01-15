@@ -50,11 +50,14 @@ model.eval()
 
 def get_img(img_path):
     img = cv2.imread(img_path)
-    return img
+    h, w = img.shape[0], img.shape[1]
+    img = cv2.resize(img, (600, 800), interpolation=cv2.INTER_NEAREST)
+    print(img.shape)
+    return img, h, w
 
 img_path = "/home/yuchaozheng_zz/test.jpg"
 
-img = get_img(img_path)
+img, h, w = get_img(img_path)
 
 img = torch.from_numpy(img)
 img = img.permute(2, 0, 1).float()
@@ -69,12 +72,12 @@ with torch.no_grad():
 
     pred = torch.argmax(pred.cpu(), dim=1)
 
-    img = get_img(img_path)
+    img, h, w = get_img(img_path)
     pred = torch.unsqueeze(pred, 1)
     pred = torch.squeeze(pred, 0)
     # c, h, w -> h, w, c
     pred = pred.permute(1, 2, 0).numpy()
     alpha_preds = pred * 255
-
+    
     predicted_masks = np.concatenate((img, alpha_preds), axis=-1)
     cv2.imwrite('/home/yuchaozheng_zz/result.png', predicted_masks)

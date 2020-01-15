@@ -30,9 +30,10 @@ import torch
 
 
 class MattingHumanDataset(Dataset):
-    def __init__(self, data_frame, img_size=768):
+    def __init__(self, data_frame, img_size_h=512, img_size_w=512):
         super(MattingHumanDataset, self).__init__()
-        self.img_size = img_size
+        self.img_size_h = img_size_h
+        self.img_size_w = img_size_w
         self.img_path = []
         self.mask_path = []
         for _, row in data_frame.iterrows():
@@ -43,6 +44,8 @@ class MattingHumanDataset(Dataset):
     def _get_mask(self, label_path):
         mask = cv2.imread(label_path, cv2.IMREAD_UNCHANGED)
         mask = mask[:, :, 3]
+        mask = cv2.resize(mask, (self.img_size_w, self.img_size_h))
+        
         mask[mask[:, :] > 0] = 1
 
         h, w = mask.shape
@@ -53,17 +56,13 @@ class MattingHumanDataset(Dataset):
 
     def _get_img(self, img_path):
         img = cv2.imread(img_path)
+        img = cv2.resize(img, (self.img_size_w, self.img_size_h))
         return img
 
     def __getitem__(self, idx):
         img = self._get_img(self.img_path[idx])
         mask = self._get_mask(self.mask_path[idx])
     
-        # if self.train:
-        #     img, mask = img_aug(img, mask)
-
-        # img = cv2.resize(img, (self.img_size, self.img_size))
-        # mask = cv2.resize(mask, (self.img_size, self.img_size))
         img = torch.from_numpy(img)
         mask = torch.from_numpy(mask)
         img = img.permute(2, 0, 1).float()

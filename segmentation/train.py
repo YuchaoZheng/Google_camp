@@ -23,6 +23,8 @@ BATCH_SIZE = 4
 EPOCH = 100
 LR = 1e-4
 EVAL_STEP = 1500
+IMG_SIZE_W = 512
+IMG_SIZE_H = 512
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print("device ", device)
 test_proportion = 0.1
@@ -52,14 +54,14 @@ print(df_train.shape)
 print(df_val.shape)
 print(df_test.shape)
 
-trainsets = MattingHumanDataset(df_train)
+trainsets = MattingHumanDataset(df_train, img_size_h=IMG_SIZE_H, img_size_w=IMG_SIZE_W)
 trainloader = torch.utils.data.DataLoader(trainsets,
                                          batch_size=BATCH_SIZE,
                                          shuffle=True,
                                          drop_last=True)
 epoch_step = len(trainloader)
 
-evalsets = MattingHumanDataset(df_val)
+evalsets = MattingHumanDataset(df_val, img_size_h=IMG_SIZE_H, img_size_w=IMG_SIZE_W)
 evalloader = torch.utils.data.DataLoader(evalsets,
                                          batch_size=BATCH_SIZE,
                                          shuffle=False,
@@ -82,8 +84,8 @@ def iou(pred, target):
 
 
 def valid(model, evalloader, criterion, data_len):
-    preds = torch.zeros((data_len, 800, 600))
-    targets = torch.zeros((data_len, 800, 600))
+    preds = torch.zeros((data_len, IMG_SIZE_H, IMG_SIZE_W))
+    targets = torch.zeros((data_len,IMG_SIZE_H, IMG_SIZE_W))
     sum_val_loss = 0
 
     with torch.no_grad():
@@ -133,11 +135,10 @@ for epoch in range(EPOCH):
 
         if step % EVAL_STEP == 0:
             model.eval()
-            print("train time ", time.time() - start_time)
             eval_loss, eval_m_iou = valid(model, evalloader, criterion, eval_len)
 
             if best_eval_m_iou < eval_m_iou:
-                torch.save(model.state_dict(), "./best.pth")
+                torch.save(model.state_dict(), "./resnet_unet_best.pth")
                 best_eval_m_iou = eval_m_iou
 
             model.train()
