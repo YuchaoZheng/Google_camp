@@ -38,7 +38,7 @@
 
 <div class="common"></div>
 
-<body>
+<body bgcolor="#FFFFFF" text="#000000" link="#33CC00" vlink="#FF6633" alink="#FFCC00" style="background-image: 'https://s2.ax1x.com/2020/01/16/lvIyFJ.gif' !important">
 
   <header class="sticky row">
     <div align="center" style="background:#000; color:#FFF">
@@ -147,7 +147,7 @@ fileInput.addEventListener('change', function () {
             }
             
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-        alert("error");
+            //alert("error");
         });
     }
 });
@@ -207,7 +207,7 @@ function Upload_params(){
             var image_src = "data:image/png;base64," + data;
             result.innerHTML = '<img src="' + image_src + '" height=400 />\n';
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-            alert("error");
+            //alert("error");
         });
     }
 
