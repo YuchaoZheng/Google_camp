@@ -188,11 +188,11 @@ def bilinear_ins(src_img, x, y):
 
 class Face(Organ):
     def __init__(self,im_bgr,img_hsv,temp_bgr,temp_hsv,landmarks,index):
-        self.index=index
+        self.index = index
 
-        self.organs_name=['jaw','mouth','nose','left eye','right eye','left brow','right brow']
+        self.organs_name = ['jaw','mouth','nose','left eye','right eye','left brow','right brow']
         
-        self.organs_points=[list(range(0, 17)),list(range(48, 61)),list(range(27, 35)),list(range(42, 48)),list(range(36, 42)),list(range(22, 27)),list(range(17, 22))]
+        self.organs_points = [list(range(0, 17)),list(range(48, 61)),list(range(27, 35)),list(range(42, 48)),list(range(36, 42)),list(range(22, 27)),list(range(17, 22))]
 
         self.organs={name:Organ(im_bgr,img_hsv,temp_bgr,temp_hsv,landmarks[points],name) for name,points in zip(self.organs_name,self.organs_points)}
 
