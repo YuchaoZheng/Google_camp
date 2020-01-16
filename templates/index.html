@@ -169,7 +169,7 @@ function Upload_params(){
     function send_to_backend(param1, param2, param3, param4){
         var formdata = new FormData();
         var sharpen_val = 0.35
-        formdata.append("img", fileInput.files[0]);
+        formdata.append("image", fileInput.files[0]);
         formdata.append("whighten", param1);
         formdata.append("lip_brighten", param2);
         formdata.append("thin", param3);
