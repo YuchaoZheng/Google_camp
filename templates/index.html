@@ -12,7 +12,11 @@
   </script>
 
   <link rel="stylesheet"  href="./static/style.css">
-  
+
+  <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
   <!--
   Note: This is a good css too worth looking at in the future : https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-nord.min.css
   -->
@@ -55,29 +59,29 @@
     </div>
 </div>
 
-<p>
+<div style="width:50%">
     <input type="file" id="test-image-file" name="test">
-</p>
+</div>
 
-<p>
-    whightening: <br>
-    <input type='number' id='param1' name='input1'>
-</p>
+<div style="width:50%">
+    <label for="points">whightening</label>
+    <input type='range' id='param1' name='input1' min="0" max="1" value="0" step="0.01">
+</div>
 
-<p>
-    lip_brightening: <br>
-    <input type='number' id='param2' name='input2'>
-</p>
+<div style="width:50%">
+    <label for="points">lip brightening</label>
+    <input type='range' id='param2' name='input2' min="0" max="1" value="0" step="0.01">
+</div>
 
-<p>
-    face_thining: <br>
-    <input type='number' id='param3' name='input3'>
-</p>
+<div style="width:50%">
+    <label for="points">face thining</label>
+    <input type='range' id='param3' name='input3' min="0" max="1" value="0" step="0.01">
+</div>
 
-<p>
-    smoothing: <br>
-    <input type='number' id='param4' name='input4'>
-</p>
+<div style="width:50%">
+    <label for="points">smoothing</label>
+    <input type='range' id='param4' name='input4' min="0" max="1" value="0" step="0.01">
+</div>
 
 <p>
   <button type="button" onclick="Upload_params()">Confirm</button>
@@ -177,6 +181,7 @@ function Upload_params(){
         formdata.append("thin", param3);
         formdata.append("smooth", param4);
         formdata.append("sharpen", sharpen_val);
+        alert("OK. Please wait for a few seconds.");
 
 
         $.ajax({
@@ -197,6 +202,7 @@ function Upload_params(){
 
     send_to_backend(param1, param2, param3, param4);
 }
+
 </script>
 
 
