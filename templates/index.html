@@ -14,7 +14,7 @@
   Note: This is a good css too worth looking at in the future : https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-nord.min.css
   -->
 
-  <link rel="stylesheet"  href="./static/style.css">
+  
 
   <meta charset="UTF-8">
   <title>ID Card Photo Auto Generator</title>
@@ -46,10 +46,11 @@
 <script src="//d3js.org/d3.v5.min.js"></script>
 
 
-<div class="boxitem">
-  <div id="test-image-preview" style="border: 1px solid #ccc; width: 60%; height: 300px; background-size: contain; background-repeat: no-repeat; background-position: center center;">
-  </div>
+<div class='boxitem' id="test-image-preview" style="border: 3px solid #ccc; width: 40%; height: 300px; background-size: contain; background-repeat: no-repeat; background-position: center center; float:left; display:inline">
 </div>
+<div class='boxitem' id="result_image" style="border: 3px solid #ccc; width: 40%; height: 300px; background-size: contain; background-repeat: no-repeat; background-position: center center;float:left; display: inline;">
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <p>
     <input type="file" id="test-image-file" name="test">
@@ -79,10 +80,10 @@
   <button type="button" onclick="Upload_params()">Confirm</button>
 </p>
 
-
 <script>
 var fileInput = document.getElementById('test-image-file');
 var preview = document.getElementById('test-image-preview');
+var result = document.getElementById('result_image');
 preview.flag = '0';
 
 var image = '';
@@ -107,8 +108,7 @@ fileInput.addEventListener('change', function () {
     // 读取文件:
     var reader = new FileReader();
     reader.onload = function(e) {
-        preview.innerHTML = '<img src="' + e.target.result + '" height=300 />\n';
-        image = e.target.result;
+        preview.innerHTML = '<img src="' + e.target.result + '" height=300 />';
     };
     // 以DataURL的形式读取文件:
     reader.readAsDataURL(file);
@@ -188,7 +188,7 @@ function Upload_params(){
             
         }).done(function (data){
             var image_src = "data:image/png;base64," + data;
-            preview.innerHTML += "<img src=" + image_src + "</img>\n";
+            result.innerHTML += '<img src="' + image_src + '" height=300 />\n';
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
             alert("error");
         });
