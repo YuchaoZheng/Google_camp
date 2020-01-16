@@ -57,23 +57,24 @@ def predict():
     print("11111")
     if flask.request.method == 'POST':
         print("PPPPPPP")
-        image = base64.urlsafe_b64decode(request.form['img'])
+        print(flask.request.form)
+        image = flask.request.files["image"].read()
         image = Image.open(io.BytesIO(image))
+        #image = base64.urlsafe_b64decode(flask.request.files.get("image"))
+        #image = Image.open(io.BytesIO(image))
 
         img_path = "./receive.jpg"
         image.save(img_path)
 
-        data = json.load(flask.request.files["data"])
-        whighten = request.form['whighten']
-        lip_brighten = request.form['lip_brighten']
-        thin = request.form['thin']
-        smooth = request.form['smooth']
-        sharpen = request.form['sharpen']
+        whighten = float(flask.request.form['whighten'])
+        lip_brighten = float(flask.request.form['lip_brighten'])
+        thin = float(flask.request.form['thin'])
+        smooth = float(flask.request.form['smooth'])
 
         raw_img = get_image(img_path)
         makeup_obj = Makeup(raw_img)
         results = makeup_obj.beautify(smooth_val=smooth, whiten_val=whighten,
-                                      lip_brighten_val=lip_brighten, sharpen_val=sharpen, thin_val=thin)
+                                      lip_brighten_val=lip_brighten, thin_val=thin)
 
         print(time.clock() - st_time)
         img_path = "./beauty_result.jpg"
