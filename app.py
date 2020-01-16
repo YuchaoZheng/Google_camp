@@ -84,10 +84,12 @@ def predict():
                 # c, h, w -> h, w, c
                 pred = pred.permute(1, 2, 0).numpy()
                 alpha_preds = pred * 255
-                img = np.concatenate((img, alpha_preds), axis=-1)
                 kernel = np.ones((10, 10), np.uint8)
-                img = cv2.dilate(img, kernel, iterations=1)
-                img = cv2.erode(img, kernel, iterations=1) 
+                alpha_preds = cv2.dilate(alpha_preds, kernel, iterations=1)
+                alpha_preds = cv2.erode(alpha_preds, kernel, iterations=1)
+
+                img = np.concatenate((img, alpha_preds), axis=-1)
+
                 cv2.imwrite('./result.png', img)
                 
                 result = open('./result.png', 'rb').read()
