@@ -21,9 +21,12 @@
 
   <link rel="stylesheet"  href="./static/style.css">
 
-  <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    .whole_bg {
+      background-image: url(https://s2.ax1x.com/2020/01/16/lvIyFJ.gif) !important;
+    }
+  </style>
 
   <!--
   Note: This is a good css too worth looking at in the future : https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-nord.min.css
@@ -32,25 +35,32 @@
   
   
   <meta charset="UTF-8">
-  <title>ID Card Photo Auto Generator</title>
+  <title>ID Photo Auto Generator</title>
 </head>
 
 
 <div class="common"></div>
 
-<body bgcolor="#FFFFFF" text="#000000" link="#33CC00" vlink="#FF6633" alink="#FFCC00" style="background-image: 'https://s2.ax1x.com/2020/01/16/lvIyFJ.gif' !important">
+<body class="whole_bg" background="https://s2.ax1x.com/2020/01/16/lvIyFJ.gif">
+
+  <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 
   <header class="sticky row">
     <div align="center" style="background:#000; color:#FFF">
     <br>
-    <a href="#" class="logo" style="color: #FFF; text-decoration: none;">ID Card Photo Online Convertor</a>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    <a href="#" class="logo" style="color: #FFF; text-decoration: none;">ID Photo Online Convertor</a>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
     <a href="https://github.com/YuchaoZheng/Google_camp" class="logo" style="color: #FFF; text-decoration: none;">code</a>
+    <br>
+    <br>
     </div>
   </header>
   <div class="row">
     <div class="col-sm-12 col-md-10 col-md-offset-1">
       <br/>
-      <h1 align="center">ID Card Photo Auto Conversion</h1>
+      <h1 align="center">ID Photo Auto Conversion</h1>
       <h1 align="right"><small>deployed by team '三个顶俩' &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</small></h1>
       <br><br>
       <h3 align="center">
@@ -65,9 +75,9 @@
 <script src="//d3js.org/d3.v5.min.js"></script>
 
 <div class='boxitem'>
-    <div id="test-image-preview" style="border: 3px solid #ccc; width: 30%; height: 400px; float:left; display:flex; vertical-align: middle;justify-content: center;align-items: center;">
+    <div class="whole_bg" id="test-image-preview" style="border: 3px solid #ccc; width: 30%; height: 400px; float:left; display:flex; vertical-align: middle;justify-content: center;align-items: center;">
     </div>
-    <div id="result_image" style="border: 3px solid #ccc; width: 30%; height: 400px; display: flex; vertical-align: middle;justify-content: center;align-items: center;">
+    <div class="whole_bg" id="result_image" style="border: 3px solid #ccc; width: 30%; height: 400px; display: flex; vertical-align: middle;justify-content: center;align-items: center;">
     </div>
 </div>
 
