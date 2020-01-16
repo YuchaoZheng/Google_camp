@@ -47,8 +47,15 @@ Front end: HTML+JavaScript
 
 ### Reference
 https://blog.csdn.net/grafx/article/details/70232797?locationNum=11&fps=1
+
 https://zhuanlan.zhihu.com/p/29718304
+
 https://www.kaggle.com/laurentmih/aisegmentcom-matting-human-datasets
+
 https://www.kaggle.com/vbookshelf/selfie-segmenter-keras-and-u-net
+
 https://github.com/milesial/Pytorch-UNet
+
 https://www.kaggle.com/rishabhiitbhu/unet-starter-kernel-pytorch-lb-0-88
+
+https://github.com/CharlesHan24/ml_camp_exp
