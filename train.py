@@ -30,7 +30,7 @@ print("device ", device)
 test_proportion = 0.1
 eval_proportion = 0.1
 
-df_data = pd.read_csv("/home/yuchaozheng_zz/Google_camp/segmentation/df_data.csv")
+df_data = pd.read_csv("/home/yuchaozheng_zz/Google_camp/df_data.csv")
 
 # df_data = df_data.sample(10000, random_state=101)
 # print(df_data.shape)

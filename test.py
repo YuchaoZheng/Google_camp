@@ -40,7 +40,7 @@ seed_everything(1025)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-model_file = "/home/yuchaozheng_zz/Google_camp/segmentation/best.pth"
+model_file = "/home/yuchaozheng_zz/Google_camp/best.pth"
 
 model = UNet()
 model = model.to(device)

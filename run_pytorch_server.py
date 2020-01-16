@@ -17,7 +17,7 @@ app = flask.Flask(__name__)
 model = None
 use_gpu = True
 
-model_file = "/home/yuchaozheng_zz/Google_camp/segmentation/best.pth"
+model_file = "/home/yuchaozheng_zz/Google_camp/best.pth"
 model = UNet()
 model.load_state_dict(torch.load(model_file))
 model.eval()
