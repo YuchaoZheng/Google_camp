@@ -58,4 +58,6 @@ https://github.com/milesial/Pytorch-UNet
 
 https://www.kaggle.com/rishabhiitbhu/unet-starter-kernel-pytorch-lb-0-88
 
-https://github.com/CharlesHan24/ml_camp_exp
+https://arxiv.org/pdf/1912.03630.pdf
+
+https://arxiv.org/pdf/1902.06838.pdf
