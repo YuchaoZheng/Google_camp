@@ -240,6 +240,8 @@ class Face(Organ):
 
         for i in range(width):
             for j in range(height):
+                if abs(i - from_x) >= r or abs(j - from_y) >= r:
+                    continue
                 dis_from_start = dist(i, j, from_x, from_y)
                 if dis_from_start < sqar_r:
                     ratio = (sqar_r - dis_from_start) / (sqar_r - dis_from_start + sqar_dis_trans + epsilon)
