@@ -19,8 +19,9 @@ app = flask.Flask(__name__)
 model = None
 use_gpu = True
 
-model_file = "/home/yuchaozheng_zz/Google_camp/best.pth"
-model = UNet()
+model_file = "/home/yuchaozheng_zz/Google_camp/new_resnet_unet_best.pth"
+model = Unet("resnet34", encoder_weights="imagenet", classes=2, activation=None)
+
 model.load_state_dict(torch.load(model_file))
 model.eval()
 if use_gpu:
