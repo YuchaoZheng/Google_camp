@@ -63,7 +63,7 @@ def predict():
 
         img_path = "./receive.jpg"
         image.save(img_path)
-        h, w = image.size
+        w, h = image.size
         print("h ", h, "w ", w)
 
         whighten = float(flask.request.form['whighten'])
@@ -93,12 +93,13 @@ def predict():
             pred = torch.squeeze(pred, 0)
             #  c, h, w -> h, w, c
             pred = pred.permute(1, 2, 0).numpy().astype('float32')
-            pred = cv2.resize(pred, (600, 800))
+            pred = cv2.resize(pred, (w, h))
             pred = np.expand_dims(pred, 2)
             alpha_preds = pred * 255
 
             img = get_image(img_path)
-
+            print(img.shape)
+            print(pred.shape)
             img = np.concatenate((img, alpha_preds), axis=-1)
 
             cv2.imwrite('./result.png', img)
