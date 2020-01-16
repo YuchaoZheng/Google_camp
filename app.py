@@ -94,7 +94,7 @@ def predict():
 
                 img = Image.open(r'./result.png').convert("RGBA")
                 x, y = img.size
-                card = Image.new("RGBA", img.size, (0, 0, 255))
+                card = Image.new("RGBA", img.size, (67, 142, 219))
                 card.paste(img, (0, 0, x, y), img)
                 card.save("result.png", format="png")
 
