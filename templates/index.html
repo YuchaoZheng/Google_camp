@@ -96,7 +96,6 @@ fileInput.addEventListener('change', function () {
     }
     // 获取File引用:
     var file = fileInput.files[0];
-    alert(file);
     // 获取File信息:
     if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
         alert('Invalid image file.');
@@ -181,8 +180,9 @@ function Upload_params(){
 
         $.ajax({
             url: '/process',
-            type: 'post',
+            type: 'POST',
             data: formdata,
+            mimeType: "multipart/form-data",
             processData: false,
             contentType: false,
             
