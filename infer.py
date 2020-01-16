@@ -43,7 +43,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 df_test = pd.read_csv("/home/yuchaozheng_zz/Google_camp/test.csv")
 
-model_file = "/home/yuchaozheng_zz/Google_camp/best.pth"
+model_file = "/home/yuchaozheng_zz/Google_camp/resnet_unet_best.pth"
 
 model = UNet()
 model = model.to(device)
@@ -53,6 +53,8 @@ model.eval()
 
 def get_mask(label_path):
     mask = cv2.imread(label_path, cv2.IMREAD_UNCHANGED)
+    mask = cv2.resize(mask, (512, 512))
+
     mask = mask[:, :, 3]
     mask[mask[:, :] > 0] = 1
 
@@ -64,6 +66,7 @@ def get_mask(label_path):
 
 def get_img(img_path):
     img = cv2.imread(img_path)
+    img = cv2.resize(img, (512, 512))
     return img
 
 for _, row in df_test.iterrows():
@@ -91,7 +94,7 @@ for _, row in df_test.iterrows():
         mask = torch.argmax(mask, dim=1)
         
         m_iou = iou(pred, mask)
-        if m_iou >= 0.995:
+        if m_iou >= 0.99:
             output_file = "/home/yuchaozheng_zz/result/result_{}".format(row['mask_name']) 
             print(img_path, output_file, m_iou)
             img = get_img(img_path)
@@ -99,10 +102,16 @@ for _, row in df_test.iterrows():
             pred = torch.unsqueeze(pred, 1)
             pred = torch.squeeze(pred, 0)
             # c, h, w -> h, w, c
-            pred = pred.permute(1, 2, 0).numpy()
+            pred = pred.permute(1, 2, 0).numpy().astype('float32')
+            
+            print(pred.shape)
+            img = cv2.resize(img, (600, 800))
+            pred = cv2.resize(pred, (600, 800))
+            pred = np.expand_dims(pred, 2)
             alpha_preds = pred * 255
-
+            print(img.shape)
+            print(alpha_preds.shape)
             predicted_masks = np.concatenate((img, alpha_preds), axis=-1)
-
+            
             cv2.imwrite(output_file, predicted_masks)
 

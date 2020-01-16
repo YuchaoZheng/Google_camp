@@ -19,7 +19,7 @@ def seed_everything(seed):
 
 seed_everything(1025)
 
-BATCH_SIZE = 4 
+BATCH_SIZE = 8 
 EPOCH = 100
 LR = 1e-4
 EVAL_STEP = 1500
@@ -106,7 +106,7 @@ def valid(model, evalloader, criterion, data_len):
 
 
 criterion = nn.BCEWithLogitsLoss()
-model = UNet()
+model = Unet("resnet34", encoder_weights="imagenet", classes=2, activation=None)
 model = model.to(device)
 
 optimizer = torch.optim.Adam(model.parameters(), lr=LR)
@@ -138,7 +138,7 @@ for epoch in range(EPOCH):
             eval_loss, eval_m_iou = valid(model, evalloader, criterion, eval_len)
 
             if best_eval_m_iou < eval_m_iou:
-                torch.save(model.state_dict(), "./resnet_unet_best.pth")
+                torch.save(model.state_dict(), "./new_resnet_unet_best.pth")
                 best_eval_m_iou = eval_m_iou
 
             model.train()
