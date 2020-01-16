@@ -63,7 +63,7 @@ def predict():
 
         img_path = "./receive.jpg"
         image.save(img_path)
-        h, w = image.size()
+        h, w = image.size
         print("h ", h, "w ", w)
 
         whighten = float(flask.request.form['whighten'])
