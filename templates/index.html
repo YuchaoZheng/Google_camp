@@ -179,7 +179,7 @@ function Upload_params(){
         alert("ok");
 
         $.ajax({
-            url: '/process',
+            url: '/predict',
             type: 'POST',
             data: formdata,
             mimeType: "multipart/form-data",
