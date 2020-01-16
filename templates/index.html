@@ -40,7 +40,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-10 col-md-offset-1">
       <br/>
-      <h1>ID Card Photo Auto Conversion <small>deployed by team '三个顶俩'</small></h1>
+      <h1 align="center">ID Card Photo Auto Conversion &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <small>deployed by team '三个顶俩'</small></h1>
       <p>
       Please upload your selfie photo on the box below.
       <p>
@@ -60,6 +60,7 @@
 </div>
 
 <div style="width:50%">
+  &nbsp &nbsp &nbsp &nbsp
     <input type="file" id="test-image-file" name="test">
 </div>
 
@@ -83,9 +84,9 @@
     <input type='range' id='param4' name='input4' min="0" max="1" value="0" step="0.01">
 </div>
 
-<p>
+<div style="width:50%">
   <button type="button" onclick="Upload_params()">Confirm</button>
-</p>
+</div>
 
 <script>
 var fileInput = document.getElementById('test-image-file');
@@ -181,7 +182,6 @@ function Upload_params(){
         formdata.append("thin", param3);
         formdata.append("smooth", param4);
         formdata.append("sharpen", sharpen_val);
-        alert("OK. Please wait for a few seconds.");
 
 
         $.ajax({
