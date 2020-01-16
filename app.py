@@ -24,6 +24,10 @@ model.eval()
 if use_gpu:
     model.cuda()
 
+@app.route('/')
+def home():
+    return flask.render_template("index.html")
+
 def get_image(img_path):
     img = cv2.imread(img_path)
     img = cv2.resize(img, (600, 800), interpolation=cv2.INTER_NEAREST)
@@ -47,22 +51,16 @@ def predict():
     # Ensure an image was properly uploaded to our endpoint.
     st_time = time.clock()
     if flask.request.method == 'POST':
-        print("PPPPPPP")
         if flask.request.files.get("image"):
             image = flask.request.files["image"].read()
             image = Image.open(io.BytesIO(image))
             img_path = "./receive.jpg"
             image.save(img_path)
-            print("PPPPPPP")
             
             data = json.load(flask.request.files["data"])
-            print(data)
 
             raw_img = get_image(img_path)
-            print(raw_img.shape)
             makeup_obj = Makeup(raw_img)
-            print(time.clock() - st_time)
-            print(type(data["smooth"]))
             results = makeup_obj.beautify(smooth_val=float(data["smooth"]), whiten_val=float(data["whiten"]),
                 lip_brighten_val=float(data["lip_brighten"]), sharpen_val=float(data["sharpen"]),
                 thin_val=float(data["thin"]))
@@ -77,7 +75,6 @@ def predict():
 
             with torch.no_grad():
                 pred = model(img)
-                print(time.clock() - st_time)
                 pred = torch.argmax(pred.cpu(), dim=1)
 
                 img = get_image(img_path)
@@ -87,9 +84,12 @@ def predict():
                 # c, h, w -> h, w, c
                 pred = pred.permute(1, 2, 0).numpy()
                 alpha_preds = pred * 255
-                predicted_masks = np.concatenate((img, alpha_preds), axis=-1)
-                cv2.imwrite('./result.png', predicted_masks)
-                print(time.clock() - st_time)
+                img = np.concatenate((img, alpha_preds), axis=-1)
+                kernel = np.ones((10, 10), np.uint8)
+                img = cv2.dilate(img, kernel, iterations=1)
+                img = cv2.erode(img, kernel, iterations=1) 
+                cv2.imwrite('./result.png', img)
+                
                 result = open('./result.png', 'rb').read()
                 print(time.clock() - st_time)
 
