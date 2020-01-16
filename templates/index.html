@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-
+  <style>
+    .center-block {
+        display: block !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+      }
+    </style>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140461850-1"></script>
@@ -45,10 +50,11 @@
   <div class="row">
     <div class="col-sm-12 col-md-10 col-md-offset-1">
       <br/>
-      <h1 align="center">ID Card Photo Auto Conversion &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <small>deployed by team '三个顶俩'</small></h1>
+      <h1 align="center">ID Card Photo Auto Conversion</h1>
+      <h1 align="right"><small>deployed by team '三个顶俩' &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</small></h1>
       <br><br>
       <h3 align="center">
-      Please upload your selfie photo on the box below.
+      Please upload your selfie on the box below.
       </h3>
      </br>
     </div>
@@ -65,31 +71,31 @@
     </div>
 </div>
 
-<div style="width:50%" align="center">
+<div class="center-block" style="width:15%" align="center">
     <input type="file" id="test-image-file" name="test">
 </div>
 
-<div style="width:50%">
-    <label for="points">whitening</label>
+<div class="center-block" style="width:40%">
+    <label for="points" class="hint">whitening</label>
     <input type='range' id='param1' name='input1' min="0" max="1" value="0" step="0.01">
 </div>
 
-<div style="width:50%">
-    <label for="points">lip brightening</label>
+<div class="center-block" style="width:40%">
+    <label for="points" class="hint"> lip brightening</label>
     <input type='range' id='param2' name='input2' min="0" max="1" value="0" step="0.01">
 </div>
 
-<div style="width:50%">
-    <label for="points">face thining</label>
+<div class="center-block" style="width:40%">
+    <label for="points" class="hint">face thining</label>
     <input type='range' id='param3' name='input3' min="0" max="1" value="0" step="0.01">
 </div>
 
-<div style="width:50%">
-    <label for="points">smoothing</label>
+<div class="center-block" style="width:40%">
+    <label for="points" class="hint">smoothing</label>
     <input type='range' id='param4' name='input4' min="0" max="1" value="0" step="0.01">
 </div>
 
-<div style="width:50%">
+<div class="center-block" style="width:15%">
   <button type="button" onclick="Upload_params()">Confirm</button>
 </div>
 
@@ -226,6 +232,10 @@ function Upload_params(){
 .logo {
     font-size: 30px;
 }
+
+.hint {
+    font-size: 20px !important;
+}
 </style>
 
 <style type="text/css">
@@ -234,6 +244,8 @@ function Upload_params(){
   a:hover {text-decoration:none; color: #FFF;}
   a:active {text-decoration:none; color: #FFF;}
 </style>
+
+
 
 
 </body>
