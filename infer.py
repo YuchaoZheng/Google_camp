@@ -43,7 +43,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 df_test = pd.read_csv("/home/yuchaozheng_zz/Google_camp/test.csv")
 
-model_file = "/home/yuchaozheng_zz/Google_camp/best.pth"
+model_file = "/home/yuchaozheng_zz/Google_camp/resnet_unet_best.pth"
 
 model = UNet()
 model = model.to(device)
@@ -53,6 +53,8 @@ model.eval()
 
 def get_mask(label_path):
     mask = cv2.imread(label_path, cv2.IMREAD_UNCHANGED)
+    mask = cv2.resize(mask, (512, 512))
+
     mask = mask[:, :, 3]
     mask[mask[:, :] > 0] = 1
 
@@ -64,6 +66,7 @@ def get_mask(label_path):
 
 def get_img(img_path):
     img = cv2.imread(img_path)
+    img = cv2.resize(img, (512, 512))
     return img
 
 for _, row in df_test.iterrows():
