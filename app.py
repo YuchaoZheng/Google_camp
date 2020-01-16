@@ -19,8 +19,9 @@ app = flask.Flask(__name__)
 model = None
 use_gpu = True
 
-model_file = "/home/yuchaozheng_zz/Google_camp/best.pth"
-model = UNet()
+model_file = "/home/yuchaozheng_zz/Google_camp/new_resnet_unet_best.pth"
+model = Unet("resnet34", encoder_weights="imagenet", classes=2, activation=None)
+
 model.load_state_dict(torch.load(model_file))
 model.eval()
 if use_gpu:
@@ -32,14 +33,15 @@ def home():
     return flask.render_template("index.html")
 
 
-def get_image(img_path):
+def get_image(img_path, need_resize=False):
     img = cv2.imread(img_path)
-    img = cv2.resize(img, (600, 800), interpolation=cv2.INTER_NEAREST)
+    if need_resize:
+        img = cv2.resize(img, (512, 512))
     return img
 
 
-def prepare_image(img_path, target_size):
-    img = get_image(img_path)
+def prepare_image(img_path, need_resize=False):
+    img = get_image(img_path, need_resize)
     img = torch.from_numpy(img)
     img = img.permute(2, 0, 1).float()
     img /= 255.
@@ -55,17 +57,14 @@ def predict():
 
     # Ensure an image was properly uploaded to our endpoint.
     st_time = time.clock()
-    print("11111")
     if flask.request.method == 'POST':
-        print("PPPPPPP")
-        print(flask.request.form)
         image = flask.request.files["image"].read()
         image = Image.open(io.BytesIO(image))
-        #image = base64.urlsafe_b64decode(flask.request.files.get("image"))
-        #image = Image.open(io.BytesIO(image))
 
         img_path = "./receive.jpg"
         image.save(img_path)
+        h, w = image.size
+        print("h ", h, "w ", w)
 
         whighten = float(flask.request.form['whighten'])
         lip_brighten = float(flask.request.form['lip_brighten'])
@@ -83,22 +82,22 @@ def predict():
         # Read the image in PIL format
 
         # Preprocess the image and prepare it for classification.
-        img = prepare_image(img_path, target_size=(800, 600))
+        img = prepare_image(img_path, need_resize=True)
+        img.cuda()
 
         with torch.no_grad():
             pred = model(img)
             pred = torch.argmax(pred.cpu(), dim=1)
 
-            img = get_image(img_path)
             pred = torch.unsqueeze(pred, 1)
             pred = torch.squeeze(pred, 0)
-
-            # c, h, w -> h, w, c
-            pred = pred.permute(1, 2, 0).numpy()
+            #  c, h, w -> h, w, c
+            pred = pred.permute(1, 2, 0).numpy().astype('float32')
+            pred = cv2.resize(pred, (600, 800))
+            pred = np.expand_dims(pred, 2)
             alpha_preds = pred * 255
-            # kernel = np.ones((10, 10), np.uint8)
-            # alpha_preds = cv2.dilate(alpha_preds, kernel, iterations=1)
-            # alpha_preds = cv2.erode(alpha_preds, kernel, iterations=1)
+
+            img = get_image(img_path)
 
             img = np.concatenate((img, alpha_preds), axis=-1)
 
