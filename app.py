@@ -3,6 +3,7 @@ import json
 from src import *
 from beautify import Makeup
 import time
+import base64
 import flask
 import torch
 import torch
@@ -54,8 +55,9 @@ def predict():
     if flask.request.method == 'POST':
         print("PPPPPPP")
         if flask.request.files.get("image"):
-            image = flask.request.files["image"].read()
+            image = base64.urlsafe_b64decode(request.form['img'])
             image = Image.open(io.BytesIO(image))
+
             img_path = "./receive.jpg"
             image.save(img_path)
             

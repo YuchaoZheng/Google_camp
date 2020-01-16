@@ -14,7 +14,7 @@ def predict_result(image_path):
     print(len(image))
 
 
-    data = {'smooth': 0.75, 'lip_brighten': 0.3, 'whiten': 0.2, 'sharpen': 0.35, 'thin': 0.8}
+    data = {'smooth': 0.75, 'lip_brighten': 0, 'whiten': 0.2, 'sharpen': 0.35, 'thin': 0.8}
 
     payload = {'image': image, 'data': json.dumps(data)}
 
