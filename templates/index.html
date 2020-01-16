@@ -10,11 +10,15 @@
 
     gtag('config', 'UA-140461850-1');
   </script>
+
+  <link rel="stylesheet"  href="./static/style.css">
+  
   <!--
   Note: This is a good css too worth looking at in the future : https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-nord.min.css
   -->
- 
-
+  
+  
+  
   <meta charset="UTF-8">
   <title>ID Card Photo Auto Generator</title>
 </head>
@@ -45,10 +49,10 @@
 <script src="//d3js.org/d3.v5.min.js"></script>
 
 <div class='boxitem'>
-  <div id="test-image-preview" style="border: 3px solid #ccc; width: 40%; height: 300px; background-size: contain; background-repeat: no-repeat; background-position: center center; float:left; display:inline">
-  </div>
-  <div id="result_image" style="border: 3px solid #ccc; width: 40%; height: 300px; background-size: contain; background-repeat: no-repeat; background-position: center center;float:left; display: inline;">
-  </div>
+    <div id="test-image-preview" style="border: 3px solid #ccc; width: 30%; height: 400px; float:left; display:flex; vertical-align: middle;justify-content: center;align-items: center;">
+    </div>
+    <div id="result_image" style="border: 3px solid #ccc; width: 30%; height: 400px; display: flex; vertical-align: middle;justify-content: center;align-items: center;">
+    </div>
 </div>
 
 <p>
@@ -107,7 +111,7 @@ fileInput.addEventListener('change', function () {
     // 读取文件:
     var reader = new FileReader();
     reader.onload = function(e) {
-        preview.innerHTML = '<img src="' + e.target.result + '" height=300 />';
+        preview.innerHTML = '<img src="' + e.target.result + '" height=400>';
     };
     // 以DataURL的形式读取文件:
     reader.readAsDataURL(file);
@@ -115,7 +119,6 @@ fileInput.addEventListener('change', function () {
     function img_to_backend(){
         var formData = new FormData();
         formData.append("img", fileInput.files[0]);
-        alert("ok");
         
         $.ajax({
             url: '/initialize',
@@ -175,7 +178,6 @@ function Upload_params(){
         formdata.append("smooth", param4);
         formdata.append("sharpen", sharpen_val);
 
-        alert("ok");
 
         $.ajax({
             url: '/predict',
@@ -187,7 +189,7 @@ function Upload_params(){
             
         }).done(function (data){
             var image_src = "data:image/png;base64," + data;
-            result.innerHTML += '<img src="' + image_src + '" height=300 />\n';
+            result.innerHTML = '<img src="' + image_src + '" height=400 />\n';
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
             alert("error");
         });
@@ -196,6 +198,20 @@ function Upload_params(){
     send_to_backend(param1, param2, param3, param4);
 }
 </script>
+
+
+<style>
+.boxitem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.image{
+    vertical-align: middle;
+}
+</style>
 
 </body>
 </html>

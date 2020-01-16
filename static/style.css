@@ -1,33 +1,6 @@
-.common {
-    text-align: center;
-}
-
 .boxitem {
     display: flex;
     justify-content: center;
-    align-items: center;  
-  }
-.boxitem img {
-    width: 35%;
-}
-
-#inputimg {
-    vertical-align: top;
-    border: solid 1px black;
-}
-
-#clearbtn {
-    width: 100%;
-    font-size: medium;
-    display: block;
-}
-
-#predictdigit {
-    width: 196px;
-    height: 196px;
-    line-height: 196px;
-    font-size: 160px;
-    border: solid 1px black;
-    background-color: white;
-    font-family: Century;
+    align-items: center;
+    vertical-align: middle;
 }
