@@ -106,7 +106,7 @@ def valid(model, evalloader, criterion, data_len):
 
 
 criterion = nn.BCEWithLogitsLoss()
-model = UNet()
+model = Unet("resnet18", encoder_weights="imagenet", classes=2, activation=None)
 model = model.to(device)
 
 optimizer = torch.optim.Adam(model.parameters(), lr=LR)
