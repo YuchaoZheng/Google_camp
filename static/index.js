@@ -24,7 +24,7 @@ fileInput.addEventListener('change', function () {
     // 读取文件:
     var reader = new FileReader();
     reader.onload = function(e) {
-        preview.innerHTML = '<img src="' + e.target.result + '" height=200 />';
+        preview.innerHTML = '<img src="' + e.target.result + '" height=300 />\n';
         image = e.target.result;
     };
     // 以DataURL的形式读取文件:
@@ -49,8 +49,6 @@ fileInput.addEventListener('change', function () {
         alert("error");
         });
     }
-
-    img_to_backend();
 });
 
 function Upload_params(){
@@ -60,22 +58,22 @@ function Upload_params(){
     var param4 = document.getElementById("param4").value;
     
     if ((param1 < 0) || (param1 > 1)){
-        alert("Wightening degree should be in range [0, 1]");
+        alert("Whightening degree should be in range [0, 1]");
         return;
     }
 
     if ((param2 < 0) || (param2 > 1)){
-        alert("Wightening degree should be in range [0, 1]");
+        alert("lip brightening degree should be in range [0, 1]");
         return;
     }
 
     if ((param3 < 0) || (param3 > 1)){
-        alert("Wightening degree should be in range [0, 1]");
+        alert("face thining degree should be in range [0, 1]");
         return;
     }
 
     if ((param4 < 0) || (param4 > 1)){
-        alert("Wightening degree should be in range [0, 1]");
+        alert("smoothing degree should be in range [0, 1]");
         return;
     }
 
@@ -85,12 +83,15 @@ function Upload_params(){
     }
 
 
-    function params_to_backend(param1, param2, param3, param4){
+    function send_to_backend(param1, param2, param3, param4){
         var formdata = new FormData();
-        formdata.append("wightening", param1);
-        formdata.append("mouth_brightening", param2);
-        formdata.append("face_thining", param3);
-        formdata.append("smoothing", param4);
+        var sharpen_val = 0.35
+        formdata.append("img", fileInput.files[0]);
+        formdata.append("whighten", param1);
+        formdata.append("lip_brighten", param2);
+        formdata.append("thin", param3);
+        formdata.append("smooth", param4);
+        formdata.append("sharpen", sharpen_val);
 
         alert("ok");
 
@@ -100,15 +101,14 @@ function Upload_params(){
             data: formdata,
             processData: false,
             contentType: false,
-            success: function (msg) {
-                alert(msg);
-            }
             
+        }).done(function (data){
+            var image_src = "data:image/png;base64," + data;
+            preview.innerHTML += "<img src=" + image_src + "</img>\n";
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
             alert("error");
         });
     }
 
-    params_to_backend(param1, param2, param3, param4);
+    send_to_backend(param1, param2, param3, param4);
 }
-  

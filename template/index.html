@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140461850-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-140461850-1');
+  </script>
+  <!--
+  Note: This is a good css too worth looking at in the future : https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-nord.min.css
+  -->
+
+  <link rel="stylesheet"  href="./static/style.css">
+
+  <meta charset="UTF-8">
+  <title>ID Card Photo Auto Generator</title>
+</head>
+
+
+<div class="common"></div>
+
+<body>
+
+  <header class="sticky row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <a href="#" class="logo">ID Card Photo Online Convertor</a>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <br/>
+      <h1>ID Card Photo Auto Conversion <small>deployed by team '三个顶俩'</small></h1>
+      <p>
+      Please upload your selfie photo on the box below.
+      <p>
+     </br>
+    <div class="boxitem">
+              <canvas id="inputimg" width="196" height="196"></canvas>
+              <button id="clearbtn" class="primary" >Clear</button>
+    </div>
+  
+    <div class="boxitem">
+              <div id="predictdigit">0</div>
+              <div id="probStr">Probability: </div>
+    </div>
+    </div>
+  </div>
+
+
+<script src = "./static/index.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//d3js.org/d3.v5.min.js"></script>
+
+
+<p>
+    <input type="file" id="test-image-file" name="test">
+</p>
+
+<p>
+    whightening: <br>
+    <input type='number' id='param1' name='input1'>
+</p>
+
+<p>
+    lip_brightening: <br>
+    <input type='number' id='param2' name='input2'>
+</p>
+
+<p>
+    face_thining: <br>
+    <input type='number' id='param3' name='input3'>
+</p>
+
+<p>
+    smoothing: <br>
+    <input type='number' id='param4' name='input4'>
+</p>
+
+<p>
+  <button type="button" onclick="Upload_params()">Confirm</button>
+</p>
+
+
+</body>
+</html>
