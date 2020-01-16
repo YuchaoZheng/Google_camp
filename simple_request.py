@@ -7,7 +7,6 @@ import json
 # Initialize the PyTorch REST API endpoint URL.
 PyTorch_REST_API_URL = 'http://35.221.192.94:443/predict'
 
-
 def predict_result(image_path):
     # Initialize image path
     image = open(image_path, 'rb').read()
