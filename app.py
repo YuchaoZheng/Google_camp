@@ -12,6 +12,7 @@ from PIL import Image
 from torch import nn
 from torchvision import transforms as T
 from torchvision.models import resnet50
+import base64
 
 # Initialize our Flask application and the PyTorch model.
 app = flask.Flask(__name__)
@@ -110,6 +111,7 @@ def predict():
             card.save("result.png", format="png")
 
             result = open('./result.png', 'rb').read()
+            result = base64.b64encode(result)
             print(time.clock() - st_time)
 
             return result
