@@ -265,6 +265,9 @@ class Face(Organ):
                         self.im_bgr[i+x, j+y, :] = np.array([0, 0, 0], dtype=np.uint8)
         """
         
+        if degree <= 0.01:
+            return
+
         left_ldmk1 = self.landmark[3]
         left_ldmk2 = self.landmark[5]
 
