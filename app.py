@@ -84,14 +84,20 @@ def predict():
                 # c, h, w -> h, w, c
                 pred = pred.permute(1, 2, 0).numpy()
                 alpha_preds = pred * 255
-                kernel = np.ones((10, 10), np.uint8)
-                alpha_preds = cv2.dilate(alpha_preds, kernel, iterations=1)
-                alpha_preds = cv2.erode(alpha_preds, kernel, iterations=1)
+                # kernel = np.ones((10, 10), np.uint8)
+                # alpha_preds = cv2.dilate(alpha_preds, kernel, iterations=1)
+                # alpha_preds = cv2.erode(alpha_preds, kernel, iterations=1)
 
                 img = np.concatenate((img, alpha_preds), axis=-1)
 
                 cv2.imwrite('./result.png', img)
-                
+
+                img = Image.open(r'./result.png').convert("RGBA")
+                x, y = img.size
+                card = Image.new("RGBA", img.size, (0, 0, 255))
+                card.paste(img, (0, 0, x, y), img)
+                card.save("result.png", format="png")
+
                 result = open('./result.png', 'rb').read()
                 print(time.clock() - st_time)
 
