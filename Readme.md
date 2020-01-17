@@ -10,6 +10,8 @@ We build an end-to-end human beautifying and matting system, which can handle an
 
 ### Deployment
 
+Please visit http://104.199.231.92:443/ for live demo.
+
 Back end: Flask
 
 Front end: HTML+JavaScript
